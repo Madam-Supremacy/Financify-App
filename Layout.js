@@ -8,12 +8,13 @@ import {
   PiggyBank, 
   TrendingUp, 
   MessageCircle,
-  Building2, 
+  Building2,
   User as UserIcon,
   Menu,
   X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/sonner";
 
 const navigationItems = [
   { title: "Dashboard", url: "Dashboard", icon: Home },
@@ -54,6 +55,7 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <Toaster richColors position="top-center" />
       <style>
         {`
           :root {
@@ -183,7 +185,7 @@ export default function Layout({ children, currentPageName }) {
       {/* Mobile Bottom Navigation */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
         <div className="flex justify-around">
-          {navigationItems.slice(0, 5).map((item) => { 
+          {navigationItems.slice(0, 5).map((item) => { // Updated slice to include 'Loans'
             const isActive = location.pathname === createPageUrl(item.url);
             return (
               <Link
